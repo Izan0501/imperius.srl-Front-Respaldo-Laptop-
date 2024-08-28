@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +10,6 @@
   --color-3b4149: #3b3b3b;
   --color-febd69: #febd69;
   --color-232f3e: #232f3e;
-  --color-bf4800: #bf4800;
   --color-f5f5f7: #f5f5f7;
   --color-ededed: #ededed;
   --color-777777: #777777;
@@ -48,15 +48,15 @@ a {
 }
 
 .button {
-  background-color: var(--color-232f3e);
-  color: white;
+  background-color: var(--color-febd69);
+  color: #131921;
   font-size: 14px;
   padding: 13px 30px;
   border-radius: 25px;
 }
 
 .button:hover {
-  background-color: var(--color-febd69);
+  background-color: #b4734b;
   color: #131921;
 }
 
@@ -158,7 +158,7 @@ footer .social-icons .text-white {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: var(--color-bf4800);
+  color: #cfc3c3;
   margin: 0 0 12px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
@@ -170,13 +170,15 @@ footer .social-icons .text-white {
   letter-spacing: -2px;
   font-weight: 500;
   text-transform: none;
+  color: #f2d782;
 }
 
 .main-banner-content p {
   font-size: 18px;
   line-height: 28px;
   letter-spacing: 0.4;
-  color: var(--color-131921);
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .small-banner-content {
@@ -216,7 +218,7 @@ footer .social-icons .text-white {
 /*home wrapper 2*/
 
 .home-wrapper-2 {
-  background-color: var(--color-f5f5f7);
+  background-color: var(--color-f5f5f7) !important;
 }
 /* home wrapper 2 ends */
 
@@ -392,7 +394,9 @@ footer .social-icons .text-white {
 /* productCard section ends */
 
 /* Famous-popular products section */
-
+.store-wrapper {
+  background-color: var(--color-777777);
+}
 .famous-card .famous-content {
   top: 5%;
   left: 10%;
@@ -758,11 +762,6 @@ footer .social-icons .text-white {
   width: 40%;
 }
 
-.cart-col-1 p{
-  color: var(--color-777777);
-  font-size: 14px;
-}
-
 .cart-col-2 {
   width: 10%;
 }
@@ -774,14 +773,18 @@ footer .social-icons .text-white {
 .cart-col-4 {
   width: 15%;
 }
+/* Cart Page Ends */
 
-.cart-data h5.price {
-  font-size: 16px;
+/* Shipping page (in Checkout page) */
+
+.total {
+  font-size: 14px;
   color: var(--color-1c1c1b);
 }
 
-.cart-subtotal p {
+.total-price {
+  font-size: 16px;
   color: var(--color-777777);
 }
 
-/* Cart Page Ends */
+/* Shipping page (in Checkout page) Ends*/

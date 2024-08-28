@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs'
@@ -14,7 +15,7 @@ const Header = () => {
             </div>
             <div className="col-6">
               <p className='text-end text-white mb-0'>Hotline:
-                <a href='tel: +54381683547' className='text-white'>+54 381683547</a>
+                <Link to='/tel: +54381683547' className='text-white'>+54 381683547</Link>
               </p>
             </div>
           </div>
