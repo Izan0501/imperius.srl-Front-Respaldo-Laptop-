@@ -6,6 +6,7 @@ export const AuthProvider = ({children}) => {
 
     const data = {
         user,
+        setUser,
     };
 
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>

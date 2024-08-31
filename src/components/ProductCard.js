@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import prodcompare from "../images/prodcompare.svg";
 import wish from "../images/wish.svg"
-import wishlist from "../images/wishlist.svg"
+// import wishlist from "../images/wishlist.svg"
 import watch from "../images/watch.jpg"
 import watch2 from "../images/watch1.jpg"
 import addcart from "../images/add-cart.svg"
@@ -64,7 +64,7 @@ const ProductCard = (props) => {
             <Link to={`${location.pathname === '/' ? '/product/:id' : location.pathname=== '/product/:id' ? 'product/1' : ':id'}`} className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
                         <Link>
-                            <img src={wishlist} alt="wishlist" />
+                            <img src={wish} alt="wishlist" />
                         </Link>
                     </div>
                     <div className="product-image">

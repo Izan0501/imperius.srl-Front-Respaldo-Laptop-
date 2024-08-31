@@ -42,14 +42,12 @@ function App() {
           <Route path='specific-blog' element={<SpecificBlog />} />
           <Route path='product/:id' element=
             {<SpecificProduct />} />
-
           {user ? (
             <>
               <Route path='cart' element={<Cart />} />
             </>
           ) : null
           }
-
           <Route path='checkout' element={<Checkout />} />
         </Route>
       </Routes>

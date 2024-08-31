@@ -8,11 +8,9 @@ const root = document.getElementById('root');
 const rootElement = ReactDOM.createRoot(root);
 
 rootElement.render(
-    <React.StrictMode>
-		<AuthProvider>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</AuthProvider>
-	</React.StrictMode>
+	<AuthProvider>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</AuthProvider>
 );

@@ -1,42 +1,106 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import Meta from '../components/Meta';
 import LoginHeader from '../components/StoreHeader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Container from '../components/Container';
+import CustomInput from '../components/CustomInput';
+import { useState } from 'react';
+import { loginUser } from '../api/loginUser';
+import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
+
+  const { user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: 'ivotest@gmail.com',
+    password: '123456',
+  });
+
+  /* 
+  form validation & routes navigation
+   */
+  const [error, setError] = useState(null);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  /* 
+  Getting login form data
+   */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // data
+
+    try {
+      const { access } = await loginUser(formData);
+
+      if (access) {
+        setUser({
+          firstname: 'Tomas',
+          lastname: 'Aranda',
+          email: 'tomas@test.static.com'
+        });
+        
+        navigate('/')
+      }
+
+      setError('');
+    } catch (error) {
+      setError(error.msg);
+    }
+  };
+
   return (
     <>
       <Meta title={'Login'} />
       <LoginHeader title='Login' />
-      <div className="login-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-12">
-              <div className="auth-card">
-                <h3 className='text-center mb-3'>Login</h3>
-                <form
-                  action=""
-                  className='d-flex flex-column gap-15'
-                >
-                  <div>
-                    <input type="email" name='email' placeholder='Email' className="form-control" />
-                  </div>
-                  <div className='mt-1'>
-                    <input type="password" name='password' placeholder='Password' className="form-control" />
-                  </div>
-                  <Link className='mt-2' to='/forgot-password'>Forgot Password?</Link>
-                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0" type='submit'>
-                      Login
-                    </button>
-                    <Link to='/signup' className='button signup'>SignUp</Link>
-                  </div>
-                </form>
-              </div>
+      <Container class1="login-wrapper py-5 home-wrapper-2">
+        <div className="row">
+          <div className="col-12">
+            <div className="auth-card">
+              <h3 className='text-center mb-3'>Login</h3>
+              <form
+                onSubmit={handleSubmit}
+                action=""
+                className='d-flex flex-column gap-15'
+              >
+                <CustomInput
+                  type="email"
+                  name='email'
+                  placeholder='Email'
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+                <CustomInput
+                  type="password"
+                  name='password'
+                  placeholder='Password'
+                  value={formData.password}
+                  onChange={handleInputChange}
+                />
+                <Link className='mt-2' to='/forgot-password'>Forgot Password?</Link>
+                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                  <button className="button border-0" type='submit'>
+                    Login
+                  </button>
+                  <Link to='/signup' className='button signup'>SignUp</Link>
+                </div>
+              </form>
             </div>
           </div>
+          <div className='d-flex justify-content-center align-items-center'>
+            {error && <p className='alert alert-danger w-20'>{error}</p>}
+          </div>
         </div>
-      </div>
+      </Container>
     </>
   )
 }
