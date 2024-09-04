@@ -13,9 +13,9 @@ const Signup = () => {
   //static data
   const [formData, setFormData] = useState({
     firstname: '',
-    lastname: '',
-    email: 'imperius1@gmail.com',
-    password: '12343'
+    phone: Number,
+    email: '',
+    password: ''
   });
 
   // form validation
@@ -34,7 +34,6 @@ const Signup = () => {
   //getting form register data
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const res = await registerUser(formData);
       setError('');
@@ -60,17 +59,17 @@ const Signup = () => {
                 className='d-flex flex-column gap-15'
               >
                 <CustomInput
-                  type="text"
-                  name='name'
-                  placeholder='Name'
-                  value={formData.firstname}
+                  type="number"
+                  name='+54 08927607'
+                  placeholder='+54 08927607'
+                  value={formData.phone}
                   onChange={handleInputChange}
                 />
                 <CustomInput
                   type="text"
-                  name='last name'
-                  placeholder='Last Name'
-                  value={formData.lastname}
+                  name='first name'
+                  placeholder='First Name'
+                  value={formData.firstname}
                   onChange={handleInputChange}
                 />
                 <CustomInput

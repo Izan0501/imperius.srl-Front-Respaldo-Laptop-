@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import '../App.css';
 import { Routes, Route } from 'react-router-dom';
@@ -45,10 +44,10 @@ function App() {
           {user ? (
             <>
               <Route path='cart' element={<Cart />} />
+              <Route path='checkout' element={<Checkout />} />
             </>
           ) : null
           }
-          <Route path='checkout' element={<Checkout />} />
         </Route>
       </Routes>
     </>

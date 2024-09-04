@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs'
+import { AuthContext } from '../context/AuthContext';
 
 const Header = () => {
+
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <>
       {/* Top Header */}
@@ -61,9 +65,22 @@ const Header = () => {
                 <div className="">
                   <Link to='/login' className='d-flex align-items-center gap-10 text-white'>
                     <img src="images/user.svg" alt="cart" />
-                    <p className='mb-0'>
+                    {user ? <>
+                      <button
+                        style={{
+                          "backgroundColor": "transparent",
+                          "color": "white",
+                          "border": "none"
+                        }}
+                        onClick={logout}
+                      >
+                        <p className='mb-0'>
+                          Log Out</p>
+                      </button>
+
+                    </> : <p className='mb-0'>
                       Log in <br /> My account
-                    </p>
+                    </p>}
                   </Link>
                 </div>
                 <div className="">
