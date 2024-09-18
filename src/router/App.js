@@ -36,11 +36,23 @@ function App() {
       setCartProducts(increaseQuantity);
     }
 
-    Swal.fire({
-      title: 'Your product was added correctly!',
-      icon: 'success',
-      confirmButtonText: 'Cool'
-    })
+    if (cartProducts) {
+      return (
+        Swal.fire({
+          title: 'Your product was added correctly!',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      )
+    } else {
+      return (
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        })
+      )
+    }
   };
 
   const deleteProduct = (_id) => {
@@ -51,6 +63,24 @@ function App() {
     });
 
     setCartProducts(newCart);
+
+    if (newCart) {
+      return (
+        Swal.fire({
+          title: 'Your product was deleted correctly!',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      )
+    } else {
+      return (
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        })
+      )
+    }
   };
 
   return (
@@ -75,9 +105,9 @@ function App() {
               <Route
                 path='cart'
                 element={
-                  <Cart 
-                  cartProducts={cartProducts} 
-                  deleteProduct={deleteProduct}
+                  <Cart
+                    cartProducts={cartProducts}
+                    deleteProduct={deleteProduct}
                   />
                 }
               />
