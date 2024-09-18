@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, } from 'react'
 import StoreHeader from '../components/StoreHeader'
 import Meta from '../components/Meta'
-// import ReactStars from "react-rating-stars-component";
 import ProductCard from '../components/ProductCard';
 import Container from '../components/Container';
+import { getProducts } from '../api/getProducts';
 
 const Store = () => {
   const [grid, setGrid] = useState(4);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+    .then((data) => setProducts(data))
+    .catch((error) => console.log(`Error: ${error}`));
+  }, []);
 
   return (
     <>
@@ -106,13 +113,6 @@ const Store = () => {
                   </div>
                   <div className="w-50">
                     <h5>Watch Series 7 Ultra Fast Response</h5>
-                    {/* <ReactStars
-                      count={5}
-                      size={24}
-                      activeColor="#ffd700"
-                      value={4}
-                      edit={false}
-                    /> */}
                     <b>$ 300</b>
                   </div>
                 </div>
@@ -126,13 +126,7 @@ const Store = () => {
                   </div>
                   <div className="w-50">
                     <h5>Headphones Ultimate I6+</h5>
-                    {/* <ReactStars
-                      count={5}
-                      size={24}
-                      activeColor="#ffd700"
-                      value={4}
-                      edit={false}
-                    /> */}
+
                     <b>$ 300</b>
                   </div>
                 </div>
@@ -179,10 +173,13 @@ const Store = () => {
             {/* Store Products List */}
             <div className="products-list pb-5">
               <div className="d-flex gap-10 flex-wrap">
+                {products.map((item) => (
+                  <ProductCard key={item._id} grid={grid} item={item} />    
+                ))}
+                {/* <ProductCard grid={grid} />
                 <ProductCard grid={grid} />
                 <ProductCard grid={grid} />
-                <ProductCard grid={grid} />
-                <ProductCard grid={grid} />
+                <ProductCard grid={grid} /> */}
               </div>
             </div>
           </div>

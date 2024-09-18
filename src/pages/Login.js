@@ -42,7 +42,6 @@ const Login = () => {
       const { access } = await loginUser(formData);
       login(access);
       
-      console.log(access);
       localStorage.setItem('access', access);
 
       navigate('/');

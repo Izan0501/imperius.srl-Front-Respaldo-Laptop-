@@ -1,17 +1,26 @@
 import { useState, createContext, useEffect } from "react";
 import { getUser } from "../api/getUser";
 import Loading from '../components/Loading';
+import { getProducts } from "../api/getProducts";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        getProducts()
+            .then((data) => setProducts(data))
+            .catch((error) => console.log(`Error: ${error}`));
+    }, []);
 
     useEffect(() => {
         (async () => {
             const token = localStorage.getItem('access');
             await login(token);
-            setLoading(false)
+            setLoading(false);
         })();
     }, []);
 
@@ -35,9 +44,10 @@ export const AuthProvider = ({ children }) => {
         setUser,
         login,
         logout,
+        products,
     };
 
-    if(loading) return <Loading/>
+    if (loading) return <Loading />
 
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>
 

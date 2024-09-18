@@ -2,20 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 import BlogCard from '../components/BlogCard';
-import ProductCard from '../components/ProductCard';
+// import ProductCard from '../components/ProductCard';
 import Container from '../components/Container';
 import { services } from '../utils/Data';
+import { motion } from 'framer-motion'
+import { fadeIn } from '../components/variants'
 
 const Home = () => {
     return (
         <>
             {/* home wrapper*/}
             <Container class1='home-wrapper-1 py-5'>
-                <div className="row">
+                <motion.div
+                    variants={fadeIn("left", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+                    className="row"
+                >
                     <div className="col-6">
-                        <div 
-                        style={{"width":"614px", "height":"440px", "backgroundColor":"white", "borderRadius":"10px"}}
-                        className="main-banner position-relative p-3 object-fit-fill">
+                        <div
+                            style={{ "width": "614px", "height": "440px", "backgroundColor": "white", "borderRadius": "10px" }}
+                            className="main-banner position-relative p-3 object-fit-fill">
                             <img src="images/arcor2.png" className='img-fluid rounded-3 w-100 h-100 object-fit-cover' alt="main banner" />
                             <div className="main-banner-content position-absolute">
                                 <h4>Nuevas Cofler Rellenas</h4>
@@ -28,44 +36,46 @@ const Home = () => {
                     <div className="col-6">
                         <div className="d-flex flex-wrap gap-10  justify-content-between align-items-center">
                             <div className="small-banner position-relative p-3">
-                                <img src="images/catbanner-01.jpg" className='img-fluid rounded-3' alt="main banner" />
+                                <img src="images/arcorCandy.png" className='img-fluid rounded-3' alt="main banner" />
                                 <div className="small-banner-content position-absolute">
-                                    <h4>Best Sale</h4>
-                                    <h5>LAPTOPS MAX</h5>
-                                    <p>From $1699.00 <br /> or $64.62/mo</p>
+                                    <h4>NEW</h4>
+                                    <h5 className='h51'>CANDY</h5>
                                 </div>
                             </div>
                             <div className="small-banner position-relative p-3">
-                                <img src="images/catbanner-02.jpg" className='img-fluid rounded-3' alt="main banner" />
+                                <img src="images/arcorOthers.png" className='img-fluid rounded-3' alt="main banner" />
                                 <div className="small-banner-content position-absolute">
                                     <h4>15% OFF</h4>
-                                    <h5>Smartwatch 7</h5>
-                                    <p>Shop the latest band</p>
+                                    <h5>OTROS</h5>
                                 </div>
                             </div>
                             <div className="small-banner position-relative p-3">
-                                <img src="images/catbanner-03.jpg" className='img-fluid rounded-3' alt="main banner" />
+                                <img src="images/arcorChocolates.png" className='img-fluid rounded-3 ' alt="main banner" />
                                 <div className="small-banner-content position-absolute">
-                                    <h4>NEW ARRIVAL</h4>
-                                    <h5>BUY iPad Air</h5>
-                                    <p>From $599 <br /> or $54.62/mo</p>
+                                    <h4>NEW</h4>
+                                    <h5>COFLER</h5>
                                 </div>
                             </div>
                             <div className="small-banner position-relative p-3">
-                                <img src="images/catbanner-04.jpg" className='img-fluid rounded-3' alt="main banner" />
+                                <img src="images/arcorMer.png" className='img-fluid rounded-3' alt="main banner" />
                                 <div className="small-banner-content position-absolute">
-                                    <h4>FOR YOU</h4>
-                                    <h5>HEADPHONES</h5>
-                                    <p>From $499 <br /> or $34.62/mo</p>
+                                    <h4>20% OFF</h4>
+                                    <h5>MERCADERIA</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </Container>
             {/* home wrapper 2 */}
             <Container class1='home-wrapper-2 py-5'>
-                <div className="row">
+                <motion.div
+                    variants={fadeIn("down", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+                    className="row"
+                >
                     <div className="col-12">
                         <div className="categories d-flex justify-content-between align-items-center flex-wrap">
                             <div className="d-flex gap align-items-center">
@@ -126,10 +136,17 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </Container>
+            {/* Services section */}
             <Container class1='home-wrapper-2 py-5'>
-                <div className="row">
+                <motion.div
+                    variants={fadeIn("left", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+                    className="row"
+                >
                     <div className="col-12">
                         <div className="services d-flex align-items-center justify-content-between">
                             {
@@ -145,10 +162,10 @@ const Home = () => {
                             }
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </Container>
             {/* Products section */}
-            <Container class1='featured-wrapper py-5 home-wrapper-2'>
+            {/* <Container class1='featured-wrapper py-5 home-wrapper-2'>
                 <div className="row">
                     <div className="col-12">
                         <h3 className="section-heading">
@@ -156,17 +173,28 @@ const Home = () => {
                         </h3>
                     </div>
                     <div className="row">
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
                     </div>
                 </div>
-            </Container>
+            </Container> */}
             {/* Popular products Section */}
             <Container class1='famous-wrapper py-5 home-wrapper-2'>
-                <div className="row">
-                    <div className="col-3">
+                <motion.div
+                    variants={fadeIn("right", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+
+                    className="row">
+                    <h3 className="section-heading">
+                        NEW STOCK
+                    </h3>
+                    <motion.div
+                        variants={fadeIn("up", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.7 }}
+                        className="col-3"
+                    >
                         <div className="famous-card position-relative">
                             <img src="images/famous-1.jpg" className='img-fluid' alt="famouse" />
                             <div className="famous-content position-absolute">
@@ -175,8 +203,13 @@ const Home = () => {
                                 <p>From $399 or $16.62/mo for 24 mo.*</p>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-3">
+                    </motion.div>
+                    <motion.div
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.7 }}
+                        className="col-3">
                         <div className="famous-card position-relative">
                             <img src="images/famous-2.jpg" className='img-fluid' alt="famouse" />
                             <div className="famous-content position-absolute">
@@ -185,8 +218,13 @@ const Home = () => {
                                 <p className='text-dark'>27-inch 5k Retina display</p>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-3">
+                    </motion.div>
+                    <motion.div
+                        variants={fadeIn("up", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.7 }}
+                        className="col-3">
                         <div className="famous-card position-relative">
                             <img src="images/tab.jpg" className='img-fluid' alt="famouse" />
                             <div className="famous-content position-absolute">
@@ -194,8 +232,14 @@ const Home = () => {
                                 <h6 className='text-dark'>Samsung TAb S9+</h6>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-3">
+                    </motion.div>
+                    <motion.div
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.7 }}
+
+                        className="col-3">
                         <div className="famous-card position-relative">
                             <img src="images/famous-4.jpg" className='img-fluid' alt="famouse" />
                             <div className="famous-content position-absolute">
@@ -203,12 +247,17 @@ const Home = () => {
                                 <h6 className='text-dark'>Room filling sound.</h6>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </Container>
             {/* marquee-wrapper */}
             <Container class1='marquee-wrapper py-5'>
-                <div className="row">
+                <motion.div
+                    variants={fadeIn("left", 0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.7 }}
+                    className="row">
                     <div className="col-12">
                         <div className="marquee-inner-wrapper card-wrapper">
                             <Marquee className='d-flex '>
@@ -239,7 +288,7 @@ const Home = () => {
                             </Marquee>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </Container>
             {/* blog--wrapper */}
             <Container class1="blog-wrapper py-5 home-wrapper-2">
