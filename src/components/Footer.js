@@ -6,7 +6,7 @@ import newsletter from "../images/newsletter.png"
 const Footer = () => {
   return (
     <>
-      <footer className='py-3'>
+      {/* <footer className='py-3'>
         <div className="container-xxl">
           <div className="row align-items-center">
             <div className="col-5">
@@ -26,9 +26,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
       <footer className='py-4'>
-        <div className="container-xxl">
+        <div className="container-xxl mt-3">
           <div className="row">
             <div className="col-4">
               <h4 className="text-white mb-4 fs-4">Contact Us</h4>

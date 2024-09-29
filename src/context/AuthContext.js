@@ -32,12 +32,13 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const logout = () => {
         setUser(false);
-        localStorage.clear()
-    }
+        localStorage.removeItem('products');
+        localStorage.removeItem('access');
+    };
 
     const data = {
         user,
@@ -51,4 +52,4 @@ export const AuthProvider = ({ children }) => {
 
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>
 
-} 
+}

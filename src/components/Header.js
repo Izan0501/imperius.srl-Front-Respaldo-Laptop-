@@ -10,6 +10,14 @@ const Header = ({ cartProducts }) => {
 
   const handleChange = (e) => {
     setSearchParams({ title: e.target.value })
+
+    if (!searchParams) {
+      return (
+        <p>
+          Please Introduce Something
+        </p>
+      )
+    }
   }
 
   return (
@@ -36,7 +44,7 @@ const Header = ({ cartProducts }) => {
                   value={searchParams.get('title') ? searchParams.get('title') : ''}
                 />
                 <span className="input-group-text p-3" id="basic-addon2">
-                  <BsSearch className='fs-4' />
+                  <BsSearch cursor={'pointer'} onClick={handleChange} className='fs-4' />
                 </span>
               </div>
               <ul className={searchParams.get('title') ? 'filterContent mt-0 d-flex' : 'd-none'}>

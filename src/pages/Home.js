@@ -29,7 +29,7 @@ const Home = () => {
                                 <h4>Nuevas Cofler Rellenas</h4>
                                 <h5>Probalas con tus amigos</h5>
                                 <p>Disponibles ya en tienda y sucursales <br /> imperius.Srl</p>
-                                <Link className='button'>Ver</Link>
+                                <Link to={'/product'} className='button'>Ver en la tienda!</Link>
                             </div>
                         </div>
                     </div>

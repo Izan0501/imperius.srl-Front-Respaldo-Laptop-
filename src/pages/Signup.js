@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Meta from '../components/Meta';
 import SignupHeader from '../components/StoreHeader';
@@ -12,8 +11,8 @@ const Signup = () => {
 
   //static data
   const [formData, setFormData] = useState({
-    firstname: '',
-    phone: Number,
+    firstname: String,
+    lastname: String,
     email: '',
     password: ''
   });
@@ -42,7 +41,6 @@ const Signup = () => {
       setError(error.msg);
       setSuccess(false)
     }
-
   }
 
   return (
@@ -59,17 +57,17 @@ const Signup = () => {
                 className='d-flex flex-column gap-15'
               >
                 <CustomInput
-                  type="number"
-                  name='+54 08927607'
-                  placeholder='+54 08927607'
-                  value={formData.phone}
+                  type="text"
+                  name='firstname'
+                  placeholder='First Name'
+                  value={formData.firstname}
                   onChange={handleInputChange}
                 />
                 <CustomInput
                   type="text"
-                  name='first name'
-                  placeholder='First Name'
-                  value={formData.firstname}
+                  name='lastname'
+                  placeholder='Last Name'
+                  value={formData.phone}
                   onChange={handleInputChange}
                 />
                 <CustomInput

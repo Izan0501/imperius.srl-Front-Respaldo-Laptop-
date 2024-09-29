@@ -6,12 +6,17 @@ import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import Container from '../components/Container';
 
-const Cart = ({ cartProducts, deleteProduct }) => {
+const Cart = ({ cartProducts, deleteProduct, addFunction, decreaseFunction, }) => {
+
+    const total = cartProducts.reduce((acc, current) => {
+        return acc + current.amount * current.price;
+    }, 0);
+
     if (cartProducts.length === 0) {
         return (
             <>
                 <div className="empty-content d-flex align-items-center justify-content-center">
-                    <h3 className="contact-title mb-4 gap-15">Your Cart Is Empty</h3>
+                    <h3 className="contact-title mb-4 gap-15">Your Cart Is Empty...</h3>
                 </div>
             </>
         )
@@ -40,7 +45,6 @@ const Cart = ({ cartProducts, deleteProduct }) => {
                                                     </div>
                                                     <div className="w-100">
                                                         <p>{products.title}</p>
-                                                        <p>1</p>
                                                     </div>
                                                 </div>
                                                 <div className="cart-col-2">
@@ -48,14 +52,19 @@ const Cart = ({ cartProducts, deleteProduct }) => {
                                                 </div>
                                                 <div className="cart-col-3 d-flex align-items-center gap-15">
                                                     <div>
-                                                        <input
-                                                            className='form-control'
-                                                            type="number"
-                                                            name=""
-                                                            min={1}
-                                                            max={10}
-                                                            id=""
-                                                        />
+                                                        <button
+                                                            className="decreaseBtn"
+                                                            onClick={() => decreaseFunction(products)}
+                                                        >-</button>
+                                                    </div>
+                                                    <div>
+                                                        <p className='mt-3'>{products.amount}</p>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className="addBtn"
+                                                            onClick={() => addFunction(products)}
+                                                        >+</button>
                                                     </div>
                                                     <div>
                                                         <AiFillDelete
@@ -65,7 +74,7 @@ const Cart = ({ cartProducts, deleteProduct }) => {
                                                     </div>
                                                 </div>
                                                 <div className="cart-col-4">
-                                                    <h5 className="price">${products.price}</h5>
+                                                    <h5 className="price">${products.price * products.amount}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +90,7 @@ const Cart = ({ cartProducts, deleteProduct }) => {
                         <div className="d-flex justify-content-between align-items-baseline">
                             <Link to='/product' className='button'><BiArrowBack />&nbsp;&nbsp;Go back to store</Link>
                             <div className='d-flex align-items-end flex-column'>
-                                <h4>SubTotal: $200</h4>
+                                <h4>SubTotal: ${total} </h4>
                                 <p>Taxes and shiping caculated at checkout</p>
                                 <Link
                                     to='/checkout'

@@ -11,8 +11,8 @@ const Store = () => {
 
   useEffect(() => {
     getProducts()
-    .then((data) => setProducts(data))
-    .catch((error) => console.log(`Error: ${error}`));
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(`Error: ${error}`));
   }, []);
 
   return (
@@ -126,7 +126,6 @@ const Store = () => {
                   </div>
                   <div className="w-50">
                     <h5>Headphones Ultimate I6+</h5>
-
                     <b>$ 300</b>
                   </div>
                 </div>
@@ -174,12 +173,12 @@ const Store = () => {
             <div className="products-list pb-5">
               <div className="d-flex gap-10 flex-wrap">
                 {products.map((item) => (
-                  <ProductCard key={item._id} grid={grid} item={item} />    
+                  <ProductCard
+                    key={item._id}
+                    grid={grid}
+                    item={item}
+                  />
                 ))}
-                {/* <ProductCard grid={grid} />
-                <ProductCard grid={grid} />
-                <ProductCard grid={grid} />
-                <ProductCard grid={grid} /> */}
               </div>
             </div>
           </div>

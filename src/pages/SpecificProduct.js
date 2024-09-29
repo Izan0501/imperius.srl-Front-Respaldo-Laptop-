@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { getProduct } from '../api/getSpecificProduct';
 
 
-const SpecificProduct = ({ addProductToCart }) => {
+const SpecificProduct = ({ addProductToCart, addProductToList }) => {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
@@ -28,9 +28,11 @@ const SpecificProduct = ({ addProductToCart }) => {
         textField.remove()
     }
 
-    const { title, price, description, category, image, quantity } = product
 
-    const propsZ = { width: 400, heigth: 500, zoomWidth: 600, img: 'http://localhost:3977/' + image }; 
+    const { title, price, description, category, image } = product
+
+    const propsZ = { width: 400, heigth: 500, zoomWidth: 600, img: 'http://localhost:3977/' + image };
+
 
     return (
         <>
@@ -100,18 +102,25 @@ const SpecificProduct = ({ addProductToCart }) => {
                                         >
                                             <Link to='/cart'>Add To Cart</Link>
                                         </Link>
-                                        <button className='button signup'>
-                                            <Link to='/checkout'>Buy it now</Link>
-                                        </button>
                                     </div>
                                 </div>
                                 <div className="d-flex align-items-center gap-15">
-                                    <div>
-                                        <Link to="/"><TbGitCompare className='fs-5 me-2' />Add to Compare</Link>
-                                    </div>
-                                    <div>
-                                        <Link to="/"><AiOutlineHeart className='fs-5 me-2' />Add to Wishlist</Link>
-                                    </div>
+                                    <button
+                                        onClick={()=> addProductToList(product)}
+                                        style={{
+                                            "backgroundColor": "transparent",
+                                            "border": "none"
+                                        }}
+                                    >
+                                        <Link
+                                            to="/wishlist"
+                                        >
+                                            <AiOutlineHeart
+                                                className='fs-5 me-2'
+                                            />
+                                            Add to Wishlist
+                                        </Link>
+                                    </button>
                                 </div>
                                 <div className="d-flex gap-10 my-3">
                                     <h3 className='product-heading'>Shipping & Returns: </h3>

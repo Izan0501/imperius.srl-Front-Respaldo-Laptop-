@@ -7,7 +7,7 @@ import view from "../images/view.svg"
 
 const ProductCard = (props) => {
 
-    const { title, description, price, image, _id, quantity } = props.item;
+    const { title, description, price, image, _id } = props.item;
 
     const { grid } = props
     const location = useLocation();
